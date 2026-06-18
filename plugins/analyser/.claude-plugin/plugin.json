@@ -1,0 +1,10 @@
+{
+  "name": "analyser",
+  "version": "0.1.0",
+  "description": "Repository intelligence and task-specification layer for AAC-style action and critic workflows.",
+  "author": {
+    "name": "Local"
+  },
+  "skills": "./skills",
+  "commands": "./commands"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "composer",
+  "version": "0.1.0",
+  "description": "Composer automation workflow with specialized workers, assignment files, worker branches, and strict review.",
+  "author": {
+    "name": "Local"
+  },
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Composer",
+    "shortDescription": "Plan, assign, review, and merge worker branches.",
+    "longDescription": "Provides the composer workflow for project analysis, file-based worker assignment, branch-isolated implementation, strict handoff review, final documentation, and merge orchestration.",
+    "developerName": "Local",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use composer to automate this feature."
+    ]
+  }
+}

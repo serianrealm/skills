@@ -1,0 +1,12 @@
+{
+  "name": "composer",
+  "version": "0.1.0",
+  "description": "Composer automation workflow for Claude Code using specialized workers, assignment files, worker branches, and strict review.",
+  "author": {
+    "name": "Local"
+  },
+  "skills": "./skills",
+  "agents": "./agents",
+  "commands": "./commands",
+  "hooks": "./hooks/hooks.json"
+}

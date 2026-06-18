@@ -1,0 +1,23 @@
+{
+  "name": "analyser",
+  "version": "0.1.0",
+  "description": "Repository intelligence and task-specification layer for evidence-backed implementation planning.",
+  "author": {
+    "name": "Local"
+  },
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Analyser",
+    "shortDescription": "Build evidence-backed repo intelligence and Action Packets.",
+    "longDescription": "Creates deterministic repository facts, static project graphs, semantic evidence, impact analysis, Action Packets, and upper-bound critic checks without editing application code.",
+    "developerName": "Local",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Analyse this repository task before action agents run."
+    ]
+  }
+}
