@@ -31,9 +31,9 @@ REQUIRED_SCRIPTS = [
 
 def test_analyser_plugin_manifest_and_skill_layout() -> None:
     manifest = json.loads(
-        Path("plugins/analyser/.codex-plugin/plugin.json").read_text(encoding="utf-8")
+        Path("analyser/.codex-plugin/plugin.json").read_text(encoding="utf-8")
     )
-    skill = Path("plugins/analyser/skills/analyze/SKILL.md").read_text(encoding="utf-8")
+    skill = Path("skills/analyze/SKILL.md").read_text(encoding="utf-8")
 
     assert manifest["name"] == "analyser"
     assert manifest["skills"] == "./skills"
@@ -46,13 +46,13 @@ def test_analyser_plugin_manifest_and_skill_layout() -> None:
 
 
 def test_analyser_skill_folder_matches_command_name() -> None:
-    assert Path("plugins/analyser/skills/analyze/SKILL.md").is_file()
-    assert not Path("plugins/analyser/skills/analyzer").exists()
-    assert not Path("plugins/analyser/skills/aac-analyzer").exists()
+    assert Path("skills/analyze/SKILL.md").is_file()
+    assert not Path("skills/analyzer").exists()
+    assert not Path("skills/aac-analyzer").exists()
 
 
 def test_analyser_required_references_and_scripts_exist() -> None:
-    root = Path("plugins/analyser/skills/analyze")
+    root = Path("skills/analyze")
 
     for reference in REQUIRED_REFERENCES:
         assert (root / "references" / reference).is_file()
@@ -62,7 +62,7 @@ def test_analyser_required_references_and_scripts_exist() -> None:
 
 def test_output_contract_contains_required_top_level_keys() -> None:
     contract = Path(
-        "plugins/analyser/skills/analyze/references/output-contract.md"
+        "skills/analyze/references/output-contract.md"
     ).read_text(encoding="utf-8")
 
     for key in [
@@ -83,7 +83,7 @@ def test_output_contract_contains_required_top_level_keys() -> None:
 
 def test_task_decomposition_reuses_action_packet_and_critic_review_terms() -> None:
     reference = Path(
-        "plugins/analyser/skills/analyze/references/task-decomposition.md"
+        "skills/analyze/references/task-decomposition.md"
     ).read_text(encoding="utf-8")
 
     assert "Action Packet" in reference

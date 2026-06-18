@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def test_analyser_uses_analyze_command_not_analyse() -> None:
-    command_dir = Path("plugins/analyser/commands")
+    command_dir = Path("analyser/commands")
 
     assert (command_dir / "analyze.md").is_file()
     assert not (command_dir / "analyse.md").exists()

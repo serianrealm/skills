@@ -15,7 +15,7 @@ def load_module(path: Path):
 
 
 def test_create_assignment_writes_required_contract(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/assignment.py"))
+    module = load_module(Path("composer/bin/assignment.py"))
 
     assignment = tmp_path / ".agents" / "tasks" / "architecture" / "ASSIGNMENT.md"
     module.create_assignment(
@@ -46,7 +46,7 @@ def test_create_assignment_writes_required_contract(tmp_path: Path) -> None:
 
 
 def test_append_revision_updates_current_command_and_log(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/assignment.py"))
+    module = load_module(Path("composer/bin/assignment.py"))
     assignment = tmp_path / "ASSIGNMENT.md"
     module.create_assignment(
         output_path=assignment,
@@ -80,7 +80,7 @@ def test_append_revision_updates_current_command_and_log(tmp_path: Path) -> None
 
 
 def test_validate_assignment_rejects_missing_required_heading(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/assignment.py"))
+    module = load_module(Path("composer/bin/assignment.py"))
     assignment = tmp_path / "ASSIGNMENT.md"
     assignment.write_text("# Broken\n\n## Task Identity\nOnly one heading.\n", encoding="utf-8")
 
@@ -95,7 +95,7 @@ def test_cli_create_writes_assignment(tmp_path: Path) -> None:
     subprocess.run(
         [
             "python3",
-            "plugins/composer/bin/assignment.py",
+            "composer/bin/assignment.py",
             "create",
             "--output-path",
             str(assignment),

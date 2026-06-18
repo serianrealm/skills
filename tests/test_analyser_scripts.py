@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 
-SCRIPT_ROOT = Path("plugins/analyser/skills/analyze/scripts")
+SCRIPT_ROOT = Path("skills/analyze/scripts")
 
 
 def run_json(args: list[str], cwd: Path | None = None) -> dict:

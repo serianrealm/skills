@@ -24,7 +24,7 @@ def base_event(tmp_path: Path, agent: str, tool_name: str, tool_input: dict) -> 
 
 
 def test_composer_may_write_docs_and_agents_only(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/guard.py"))
+    module = load_module(Path("composer/bin/guard.py"))
 
     allowed = module.evaluate_event(
         base_event(tmp_path, "composer", "Write", {"file_path": str(tmp_path / "docs/spec.md")})
@@ -43,7 +43,7 @@ def test_composer_may_write_docs_and_agents_only(tmp_path: Path) -> None:
 
 
 def test_developer_cannot_access_tests_or_run_tests(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/guard.py"))
+    module = load_module(Path("composer/bin/guard.py"))
 
     read_tests = module.evaluate_event(
         base_event(tmp_path, "developer", "Read", {"file_path": str(tmp_path / "tests/test_app.py")})
@@ -59,7 +59,7 @@ def test_developer_cannot_access_tests_or_run_tests(tmp_path: Path) -> None:
 
 
 def test_worker_cannot_modify_assignment(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/guard.py"))
+    module = load_module(Path("composer/bin/guard.py"))
 
     blocked = module.evaluate_event(
         base_event(
@@ -75,7 +75,7 @@ def test_worker_cannot_modify_assignment(tmp_path: Path) -> None:
 
 
 def test_worker_stop_requires_handoff(tmp_path: Path) -> None:
-    module = load_module(Path("plugins/composer/bin/guard.py"))
+    module = load_module(Path("composer/bin/guard.py"))
     event = {
         "cwd": str(tmp_path),
         "hook_event_name": "Stop",

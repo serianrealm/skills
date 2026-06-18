@@ -14,14 +14,14 @@ def load_module(path: Path):
 
 
 def test_worker_branch_name_uses_task_slug_then_feature() -> None:
-    module = load_module(Path("plugins/composer/bin/worktree.py"))
+    module = load_module(Path("composer/bin/worktree.py"))
 
     assert module.worker_branch("architecture", "checkout") == "architecture/checkout"
     assert module.worker_branch("api-design", "checkout-v2") == "api-design/checkout-v2"
 
 
 def test_slugs_reject_branch_traversal() -> None:
-    module = load_module(Path("plugins/composer/bin/worktree.py"))
+    module = load_module(Path("composer/bin/worktree.py"))
 
     assert module.validate_slug("checkout-v2") == []
     assert "must not contain '..'" in module.validate_slug("../checkout")[0]
