@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/.claude/skills/compose/bin/guard.py\""
+            "command": "python3 \"$HOME/.claude/bin/guard.py\""
           }
         ]
       }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/.claude/skills/compose/bin/guard.py\""
+            "command": "python3 \"$HOME/.claude/bin/guard.py\""
           }
         ]
       }

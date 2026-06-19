@@ -20,5 +20,5 @@ def test_plugin_is_named_composer() -> None:
 def test_hooks_point_to_composer_install_path() -> None:
     hooks = Path("composer/hooks/hooks.json").read_text(encoding="utf-8")
 
-    assert "$HOME/.claude/skills/compose/bin/guard.py" in hooks
+    assert "$HOME/.claude/skills/composer/bin/guard.py" in hooks
     assert "$HOME/.claude/skills/handoff" not in hooks

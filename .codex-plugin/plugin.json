@@ -1,0 +1,10 @@
+{
+  "name": "firemoth",
+  "version": "0.1.0",
+  "description": "The Moth who chases the flames.",
+  "author": {
+    "name": "Kasyana"
+  },
+  "skills": "./skills",
+  "commands": "./commands"
+}
