@@ -10,7 +10,7 @@ This skill is a repository intelligence and task-specification layer that prepar
 ## Operating Rules
 
 - Prefer deterministic repository analysis before LLM interpretation.
-- Build or reuse persistent `.analyzer/**` project understanding artifacts.
+- Output persistent artifacts in docs/ 
 - Extract structure first: files, modules, imports, symbols, calls, tests, configuration, CLI entry points, environment variables, dependencies, and Git state.
 - Add semantic interpretation only where it materially improves task specification.
 - Tie every architectural or behavioral conclusion to concrete evidence.
@@ -52,20 +52,62 @@ Follow `references/task-decomposition.md`. Produce the smallest reasonable set o
 
 Follow `references/test-gap-analysis.md` and `references/upper-bound-tests.md`. Passing automated tests are never the only acceptance condition.
 
+### Stage H - Human-readable architecture views
+
+After graph validation, generate a human-readable interactive architecture view.
+
+Run:
+
+```text
+scripts/render_graph_views.py --repo <path>
+```
+
+The renderer may build temporary graph data internally, but must not retain raw graph JSON after completion.
+
+Required output:
+
+```text
+.docs/reports/
+├── index.html
+├── architecture.html
+├── architecture.svg
+├── package-tree.md
+└── architecture-summary.md
+```
+
+`architecture.html` is the primary output and must support zoom, pan, search, node selection, dependency inspection, and toggling internal imports/calls.
+
+Render modules by default. Collapse functions and classes into their owning module; collapse dense modules into packages. Use readable repository-relative paths and hide external dependencies unless requested.
+
+Do not treat raw graph data as a deliverable. Analysis is incomplete until `architecture.html` has been generated and linked.
+
 ## Persistent Artifacts
 
-Store analyser-owned artifacts under `.analyzer/`:
+Store only human-readable outputs under `docs/reports/`:
 
-- `graph.json`
-- `graph.meta.json`
-- `semantic-cache/`
-- `snapshots/`
-- `diff-overlays/`
-- `reports/`
-- `schemas/`
+```text
+docs/
+└── reports/
+    ├── index.html
+    ├── architecture.html
+    ├── architecture.svg
+    ├── package-tree.md
+    ├── architecture-summary.md
+    ├── scoped/
+    └── impact/
+```
 
-Compare stored commit/fingerprint against current Git state before reuse. Reuse valid graph data. Create diff overlays for current working tree or target branch. Do not modify `.gitignore` unless the repository already permits generated local artifact ignores and doing so follows project convention.
+* `index.html`: all generated reports and diagrams.
+* `architecture.html`: interactive architecture graph.
+* `architecture.svg`: static export for documentation.
+* `package-tree.md`: package and module structure.
+* `architecture-summary.md`: evidence-backed architecture explanation.
+* `scoped/`: optional focused interactive diagrams.
+* `impact/`: task-specific impact reports and diagrams.
 
+Static graph data, semantic caches, snapshots, and diff overlays are temporary implementation details. Store them only in a temporary directory during execution and delete them before completion.
+
+Do not persist or expose `graph.json`, graph IDs, raw static-analysis records, caches, or intermediate JSON artifacts.
 ## Script Entry Points
 
 - `scripts/collect_repository_facts.py --repo <path>`
