@@ -1,0 +1,13 @@
+{
+  "name": "awesome-marketplace",
+  "owner": {
+    "name": "Elysia"
+  },
+  "plugins": [
+    {
+      "name": "awesome-plugin",
+      "source": "./",
+      "description": "Adds a quality-review skill for quick code reviews"
+    }
+  ]
+}

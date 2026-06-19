@@ -1,10 +1,10 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
-  "name": "firemoth",
+  "name": "awesome-plugin",
   "version": "0.1.0",
-  "description": "The Moth who chases the flames.",
+  "description": "My awesome plugin",
   "author": {
-    "name": "Kasyana"
+    "name": "Elysia"
   },
   "skills": [
     "./skills"
